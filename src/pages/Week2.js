@@ -30,7 +30,7 @@ const Week2 = () => {
       <nav className="navbar">
         <span className="navbar-brand">AO Coding Challenge</span>
       </nav>
-      <h1>Week 2</h1>
+      <h1 className= "W2Header">Week 2</h1>
       <div className="board">
         {renderSquare(0)}
         {renderSquare(1)}
