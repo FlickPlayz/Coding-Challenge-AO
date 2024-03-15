@@ -1,0 +1,40 @@
+.navbar {
+    background-color: green;
+    padding: .5rem 1rem;
+    color: white;
+}
+
+.navbar-brand{
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+  }
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.square {
+    width: 33.33%;
+    height: 33.33%;
+    background: #fff;
+    border: 1px solid #999;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    text-align: center;
+}
+
+.reset-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
