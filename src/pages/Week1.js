@@ -1,3 +1,4 @@
+import '../Layout.css';
 import React, { useState } from 'react';
 
 const Week1 = () => {

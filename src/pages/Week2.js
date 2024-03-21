@@ -1,4 +1,5 @@
 import '../StyleSheet/Week2.css';
+import '../Layout.css';
 import React, { useState } from 'react';
 
 const Week2 = () => {
