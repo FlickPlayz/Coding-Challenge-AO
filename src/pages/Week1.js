@@ -48,9 +48,6 @@ const Week1 = () => {
   
     return (
       <div>
-        <nav className="navbar">
-          <span className="navbar-brand">AO Coding Challenge</span>
-        </nav>
         <div className='container'>
           <h2>Password Generator</h2>
           <div className='password-field'>

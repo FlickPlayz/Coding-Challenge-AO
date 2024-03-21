@@ -70,6 +70,7 @@ h2 {
   background-color: green;
   height: 40px;
   color: white;
+  height: auto;
 }
 
 .navbar-brand{
