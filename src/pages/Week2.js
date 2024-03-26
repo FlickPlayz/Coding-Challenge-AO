@@ -26,13 +26,18 @@ const Week2 = () => {
           return board[a];
         }
       }
+      if (board.every(square => square !== null)) {
+        return 'draw';
+      }
       return null;
     };
 
-    const winner = calculateWinner();
-    if (winner) {
-      setWinner(winner);
-      setTally(prevTally => ({ ...prevTally, [winner]: prevTally[winner] + 1 }));
+    const result = calculateWinner();
+    if (result && result !== 'draw') {
+      setWinner(result);
+      setTally(prevTally => ({ ...prevTally, [result]: prevTally[result] + 1 }));
+    } else if (result === 'draw') {
+      setWinner('draw');
     }
   }, [board]);
 
@@ -78,7 +83,7 @@ const Week2 = () => {
         {renderSquare(8)}
       </div>
       <div className="status">
-        {winner ? `Winner: ${winner}` : `Current Turn: ${currentPlayer}`}
+        {winner ? (winner === 'draw' ? "It's a draw" : `Winner: ${winner}`) : `Current Turn: ${currentPlayer}`}
       </div>
       <div className="tally">
         <p>Tally:</p>
