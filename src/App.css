@@ -66,20 +66,6 @@ h2 {
 
 }
 
-.navbar{
-  background-color: green;
-  height: 40px;
-  color: white;
-}
-
-.navbar-brand{
-  font-size: 20px;
-  font-weight: 700;
-  margin-left: 20px;
-  text-decoration: none;
-  color: white;
-}
-
 .btn {
   display: block;
   width: 100%;

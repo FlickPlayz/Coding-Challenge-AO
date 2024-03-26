@@ -1,14 +1,34 @@
+import '../Layout.css';
 import '../StyleSheet/Home.css';
 import React from 'react';
+
+  /*
+   line 16  add modal-content and add btn within it
+    */
+
+
 const Home = () => {
-    return (
-      <div>
-        <nav className="navbar">
-          <span className="navbar-brand">AO Coding Challenge</span>
-        </nav>
-        <h1>Home</h1>
-      </div>
-    );
-  }
+  const showModal = true; 
+  return (
+    <div>
+    <div className= "container">
+    <div className={`modal ${showModal ? 'show' : ''}`}>
   
-  export default Home;
+    </div>
+    <div className='btns'>
+        <div className='btn'>
+        <button>Week 1</button>
+        </div>
+        <div className='btn'>
+        <button>Week 2</button>
+        </div>
+        <div className='btn'>
+        <button>Coming Soon!</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Home;
