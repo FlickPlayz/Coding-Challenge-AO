@@ -1,21 +1,25 @@
 import '../Layout.css';
 import '../StyleSheet/Home.css';
 import React from 'react';
+import { Outlet, Link } from "react-router-dom";
 
 const Home = () => {
   const showModal = true; 
   return (
-    <div>
     <div className={`modal ${showModal ? 'show' : ''}`}>
         <div>
-        <button className='btn'>Week 1</button>
-        </div>
-        <div>
-        <button className='btn'>Week 2</button>
-        </div>
-        <div>
-        <button className='btn'>Coming Soon!</button>
-        </div>
+        <ul>
+        <li>
+          <Link to="/Week1">Week 1</Link>
+        </li>
+        <li>
+          <Link to="/Week2">Week 2</Link>
+        </li>
+        <li>
+          <Link to="nOPAGE">Coming Soon!</Link>
+        </li>
+      </ul>
+      <Outlet />
         </div>
         </div>
   );
