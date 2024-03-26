@@ -71,3 +71,11 @@
     color: black;
 }
 
+.redDevils {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 100px; 
+    height: 100px; 
+  }
+

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../StyleSheet/Week2.css';
+import ticTacToeImage from '../red devils.png';
 
 const Week2 = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -63,7 +64,7 @@ const Week2 = () => {
   };
 
   return (
-    <div>
+    <div className="week2-container">
       <h1 className="W2Header">Week 2</h1>
       <div className="board">
         {renderSquare(0)}
@@ -86,6 +87,7 @@ const Week2 = () => {
       </div>
       <button className="reset-button" onClick={handleReset}>Reset Game</button>
       <button className="reset-button2" onClick={handleScoreReset}>Reset Scores</button>
+      <img className= "redDevils" src={ticTacToeImage} alt="RedDevils" />
     </div>
   );
 };
