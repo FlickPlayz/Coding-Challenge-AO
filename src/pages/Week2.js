@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../StyleSheet/Week2.css';
+import '../Layout.css';
 
 const Week2 = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
