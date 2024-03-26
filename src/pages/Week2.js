@@ -85,7 +85,7 @@ const Week2 = () => {
         <p>O: {tally.O}</p>
       </div>
       <button className="reset-button" onClick={handleReset}>Reset Game</button>
-      <button className="reset-button" onClick={handleScoreReset}>Reset Scores</button>
+      <button className="reset-button2" onClick={handleScoreReset}>Reset Scores</button>
     </div>
   );
 };

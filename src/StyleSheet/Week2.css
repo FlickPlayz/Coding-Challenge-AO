@@ -20,7 +20,7 @@
 
 .reset-button {
     display: block;
-    width: 100%;
+    margin: auto;
     border: none;
     background-color: var(--secondary-color);
     color: var(--white);
@@ -35,8 +35,39 @@
         background-color: black;
     }
 
+.reset-button2 {
+        display: block;
+        margin: auto;
+        border: none;
+        background-color: var(--secondary-color);
+        color: var(--white);
+        font-size: 16px;
+        padding: 8px 12px;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+.reset-button2:hover {
+        background-color: black;
+    }
 
 .W2Header {
     text-align: center;
-    color: white;
+    color: green;
 }
+
+.status {
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: underline;
+    color: black;
+}
+
+
+
+.tally {
+    text-align: center;
+    color: black;
+}
+
