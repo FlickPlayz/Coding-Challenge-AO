@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../StyleSheet/Week2.css';
-import '../Layout.css';
 
 const Week2 = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -51,6 +50,10 @@ const Week2 = () => {
     setWinner(null);
   };
 
+  const handleScoreReset = () => {
+    setTally({ X: 0, O: 0 });
+  };
+
   const renderSquare = (index) => {
     return (
       <button className="square" onClick={() => handleClick(index)} disabled={winner !== null || board[index] !== null}>
@@ -84,7 +87,8 @@ const Week2 = () => {
         <p>X: {tally.X}</p>
         <p>O: {tally.O}</p>
       </div>
-      <button className="reset-button" onClick={handleReset}>Reset</button>
+      <button className="reset-button" onClick={handleReset}>Reset Game</button>
+      <button className="reset-button" onClick={handleScoreReset}>Reset Scores</button>
     </div>
   );
 };
