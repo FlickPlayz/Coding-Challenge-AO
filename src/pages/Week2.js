@@ -3,71 +3,78 @@ import '../StyleSheet/Week2.css';
 import ticTacToeImage from '../red devils.png';
 
 const Week2 = () => {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [currentPlayer, setCurrentPlayer] = useState('X');
-  const [winner, setWinner] = useState(null);
-  const [tally, setTally] = useState({ X: 0, O: 0 });
+  // State variables
+  const [board, setBoard] = useState(Array(9).fill(null)); // Represents the tic-tac-toe board
+  const [currentPlayer, setCurrentPlayer] = useState('X'); // Represents the current player ('X' or 'O')
+  const [winner, setWinner] = useState(null); // Represents the winner of the game ('X', 'O', or 'draw')
+  const [tally, setTally] = useState({ X: 0, O: 0 }); // Represents the score tally for 'X' and 'O'
 
+  // useEffect hook to calculate the winner and update the state variables accordingly
   useEffect(() => {
     const calculateWinner = () => {
       const lines = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
+        [0, 1, 2], // Top row
+        [3, 4, 5], // Middle row
+        [6, 7, 8], // Bottom row
+        [0, 3, 6], // Left column
+        [1, 4, 7], // Middle column
+        [2, 5, 8], // Right column
+        [0, 4, 8], // Diagonal from top-left to bottom-right
+        [2, 4, 6], // Diagonal from top-right to bottom-left
       ];
       for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-          return board[a];
+          return board[a]; // Return the winner ('X' or 'O')
         }
       }
       if (board.every(square => square !== null)) {
-        return 'draw';
+        return 'draw'; // Return 'draw' if all squares are filled and there is no winner
       }
-      return null;
+      return null; // Return null if there is no winner yet
     };
 
     const result = calculateWinner();
     if (result && result !== 'draw') {
-      setWinner(result);
-      setTally(prevTally => ({ ...prevTally, [result]: prevTally[result] + 1 }));
+      setWinner(result); // Set the winner
+      setTally(prevTally => ({ ...prevTally, [result]: prevTally[result] + 1 })); // Update the score tally
     } else if (result === 'draw') {
-      setWinner('draw');
+      setWinner('draw'); // Set the winner as 'draw'
     }
   }, [board]);
 
+  // Function to handle a square click
   const handleClick = (index) => {
     if (!winner && board[index] === null) {
       const newBoard = [...board];
-      newBoard[index] = currentPlayer;
-      setBoard(newBoard);
-      setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+      newBoard[index] = currentPlayer; // Set the current player's symbol ('X' or 'O') in the clicked square
+      setBoard(newBoard); // Update the board state
+      setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X'); // Switch the current player
     }
   };
 
+  // Function to handle game reset
   const handleReset = () => {
-    setBoard(Array(9).fill(null));
-    setCurrentPlayer('X');
-    setWinner(null);
+    setBoard(Array(9).fill(null)); // Reset the board
+    setCurrentPlayer('X'); // Set the current player as 'X'
+    setWinner(null); // Reset the winner
   };
 
+  // Function to handle score reset
   const handleScoreReset = () => {
-    setTally({ X: 0, O: 0 });
+    setTally({ X: 0, O: 0 }); // Reset the score tally
   };
 
+  // Function to render a square button
   const renderSquare = (index) => {
     return (
       <button className="square" onClick={() => handleClick(index)} disabled={winner !== null || board[index] !== null}>
-        {board[index]}
+        {board[index]} {/* Display the symbol ('X' or 'O') in the square */}
       </button>
     );
   };
 
+  // UI Part
   return (
     <div className="week2-container">
       <h1 className="W2Header">Week 2</h1>
