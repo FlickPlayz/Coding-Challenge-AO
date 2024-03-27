@@ -9,7 +9,7 @@ const Week2 = () => {
   const [winner, setWinner] = useState(null); // Represents the winner of the game ('X', 'O', or 'draw')
   const [tally, setTally] = useState({ X: 0, O: 0 }); // Represents the score tally for 'X' and 'O'
 
-  // useEffect hook to calculate the winner and update the state variables accordingly
+  // useEffect to calculate the winner and update the state variables accordingly
   useEffect(() => {
     const calculateWinner = () => {
       const lines = [
