@@ -59,6 +59,7 @@ const Week4 = () => {
 
   return (
     <div className="week4">
+      <h1 className="title">Connect 4</h1>
       <div className="grid">
         {grid.map((row, rowIndex) => (
           <div key={rowIndex} className="row">

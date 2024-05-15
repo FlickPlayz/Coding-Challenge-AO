@@ -1,8 +1,14 @@
 .week4 {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
+}
+
+.title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: red;
 }
 
 .grid {
