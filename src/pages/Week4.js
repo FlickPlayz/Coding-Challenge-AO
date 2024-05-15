@@ -9,6 +9,7 @@ const Week4 = () => {
   const [currentPlayer, setCurrentPlayer] = useState('Red');
   const [isCpuEnabled, setIsCpuEnabled] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
 
   useEffect(() => {
     if (currentPlayer === 'Yellow' && isCpuEnabled) {
@@ -91,6 +92,12 @@ const Week4 = () => {
   const startGame = (playAgainstCpu) => {
     setIsCpuEnabled(playAgainstCpu);
     setGameStarted(true);
+    setShowOptions(false);
+  };
+
+  const showGameOptions = () => {
+    setShowOptions(true);
+    setGameStarted(false);
   };
 
   return (
@@ -98,8 +105,14 @@ const Week4 = () => {
       <h1 className="title">Connect 4</h1>
       {!gameStarted ? (
         <div className="start-options">
-          <button className="start-button" onClick={() => startGame(false)}>2 Player</button>
-          <button className="start-button" onClick={() => startGame(true)}>Play Against CPU</button>
+          {showOptions ? (
+            <>
+              <button className="start-button" onClick={() => startGame(false)}>2 Player</button>
+              <button className="start-button" onClick={() => startGame(true)}>Play Against CPU</button>
+            </>
+          ) : (
+            <button className="back-button" onClick={showGameOptions}>Back</button>
+          )}
         </div>
       ) : (
         <>
@@ -117,7 +130,10 @@ const Week4 = () => {
               </div>
             ))}
           </div>
-          <button className="reset-button" onClick={resetGame}>Reset Game</button>
+          <div className="button-group">
+            <button className="reset-button" onClick={resetGame}>Reset Game</button>
+            <button className="back-button" onClick={showGameOptions}>Back</button>
+          </div>
         </>
       )}
     </div>

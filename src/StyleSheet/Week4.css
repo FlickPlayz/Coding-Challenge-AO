@@ -9,16 +9,17 @@
 .title {
   font-size: 2em;
   margin-bottom: 20px;
-  color: red;
+  color: #82ad32;
 }
 
 .start-options {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-.start-button, .reset-button {
+.start-button, .reset-button, .back-button {
   padding: 10px 20px;
   font-size: 1em;
   color: white;
@@ -29,7 +30,7 @@
   transition: background-color 0.3s ease;
 }
 
-.start-button:hover, .reset-button:hover {
+.start-button:hover, .reset-button:hover, .back-button:hover {
   background-color: #cc0000;
 }
 
@@ -65,4 +66,15 @@
 
 .cell:hover {
   background-color: lightgray;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.reset-button {
+  margin-right: 10px; 
+  margin-bottom: 10px;
 }
