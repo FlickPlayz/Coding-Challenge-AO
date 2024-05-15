@@ -24,7 +24,7 @@ const Home = () => {
       </ul>
       <Outlet />
         </div>
-        </div>
+    </div>
   );
 }
 
