@@ -19,7 +19,7 @@ const Home = () => {
           <Link to="/Week3">Week 3</Link>
         </li>
         <li>
-          <Link to="nOPAGE">Coming Soon!</Link>
+          <Link to="/Week4">Week 4</Link>
         </li>
       </ul>
       <Outlet />
