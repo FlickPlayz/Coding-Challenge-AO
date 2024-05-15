@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../StyleSheet/Week4.css';
 
 const Week4 = () => {
@@ -7,6 +7,27 @@ const Week4 = () => {
   const emptyGrid = Array(rows).fill(null).map(() => Array(cols).fill(null));
   const [grid, setGrid] = useState(emptyGrid);
   const [currentPlayer, setCurrentPlayer] = useState('Red');
+  const [isCpuEnabled, setIsCpuEnabled] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false);
+
+  useEffect(() => {
+    if (currentPlayer === 'Yellow' && isCpuEnabled) {
+      handleCpuMove();
+    }
+  }, [currentPlayer]);
+
+  const handleCpuMove = () => {
+    setTimeout(() => {
+      const availableCols = [];
+      for (let col = 0; col < cols; col++) {
+        if (grid[0][col] === null) {
+          availableCols.push(col);
+        }
+      }
+      const randomCol = availableCols[Math.floor(Math.random() * availableCols.length)];
+      handleDrop(randomCol);
+    }, 3000); // 3-second delay
+  };
 
   const handleDrop = (col) => {
     const newGrid = grid.map(row => row.slice());
@@ -19,8 +40,14 @@ const Week4 = () => {
         setTimeout(() => {
           cell.classList.remove('dropping');
         }, 500);
-        checkWinner(newGrid, currentPlayer);
-        setCurrentPlayer(currentPlayer === 'Red' ? 'Yellow' : 'Red');
+        if (checkWinner(newGrid, currentPlayer)) {
+          setTimeout(() => {
+            alert(`${currentPlayer} wins!`);
+            setGrid(emptyGrid);
+          }, 100);
+        } else {
+          setCurrentPlayer(currentPlayer === 'Red' ? 'Yellow' : 'Red');
+        }
         return;
       }
     }
@@ -48,32 +75,51 @@ const Week4 = () => {
             checkDirection(grid, player, row, col, 1, 1) >= 4 || // diagonal down-right
             checkDirection(grid, player, row, col, 1, -1) >= 4   // diagonal down-left
           ) {
-            alert(`${player} wins!`);
-            setGrid(emptyGrid);
-            return;
+            return true;
           }
         }
       }
     }
+    return false;
+  };
+
+  const resetGame = () => {
+    setGrid(emptyGrid);
+    setCurrentPlayer('Red');
+  };
+
+  const startGame = (playAgainstCpu) => {
+    setIsCpuEnabled(playAgainstCpu);
+    setGameStarted(true);
   };
 
   return (
     <div className="week4">
       <h1 className="title">Connect 4</h1>
-      <div className="grid">
-        {grid.map((row, rowIndex) => (
-          <div key={rowIndex} className="row">
-            {row.map((cell, colIndex) => (
-              <div
-                key={colIndex}
-                className={`cell cell-${rowIndex}-${colIndex}`}
-                onClick={() => handleDrop(colIndex)}
-                style={{ backgroundColor: cell || 'white' }}
-              />
+      {!gameStarted ? (
+        <div className="start-options">
+          <button className="start-button" onClick={() => startGame(false)}>2 Player</button>
+          <button className="start-button" onClick={() => startGame(true)}>Play Against CPU</button>
+        </div>
+      ) : (
+        <>
+          <div className="grid">
+            {grid.map((row, rowIndex) => (
+              <div key={rowIndex} className="row">
+                {row.map((cell, colIndex) => (
+                  <div
+                    key={colIndex}
+                    className={`cell cell-${rowIndex}-${colIndex}`}
+                    onClick={() => currentPlayer === 'Red' || !isCpuEnabled ? handleDrop(colIndex) : null}
+                    style={{ backgroundColor: cell || 'white' }}
+                  />
+                ))}
+              </div>
             ))}
           </div>
-        ))}
-      </div>
+          <button className="reset-button" onClick={resetGame}>Reset Game</button>
+        </>
+      )}
     </div>
   );
 };

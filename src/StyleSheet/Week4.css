@@ -3,12 +3,34 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  justify-content: center;
 }
 
 .title {
   font-size: 2em;
   margin-bottom: 20px;
   color: red;
+}
+
+.start-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.start-button, .reset-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #ff0000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover, .reset-button:hover {
+  background-color: #cc0000;
 }
 
 .grid {
